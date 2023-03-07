@@ -23,14 +23,14 @@ class FoodAdapter(val foodList: ArrayList<Food>): RecyclerView.Adapter<FoodAdapt
     }
 
     override fun onBindViewHolder(holder: FoodHolder, position: Int) {
-        holder.binding.recyclerFoodName.text = foodList.get(position).foodName
-        holder.binding.recyclerFoodKj.text = foodList.get(position).foodKj
+        holder.binding.recyclerFoodName.text = foodList[position].foodName
+        holder.binding.recyclerFoodKj.text = foodList[position].foodKj
 
         holder.itemView.setOnClickListener {
-            val action = FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment(foodList.get(position).uuid)
+            val action = FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment(foodList[position].uuid)
             Navigation.findNavController(it).navigate(action)
         }
-        holder.binding.imageView.downloadImage(foodList.get(position).foodImage, makePlaceHolder(holder.itemView.context))
+        holder.binding.imageView.downloadImage(foodList[position].foodImage, makePlaceHolder(holder.itemView.context))
     }
 
     override fun getItemCount(): Int {
